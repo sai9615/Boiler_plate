@@ -1,0 +1,23 @@
+{
+  "name": "boiler_plate",
+  "version": "1.0.0",
+  "description": "Login page for all my web projects",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.8.10",
+    "node": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "backend" : "nodemon index.js" 
+  },
+  "author": "",
+  "license": "ISC"
+}
