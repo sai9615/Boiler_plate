@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const configs = require('./configs/key')
 const {User} = require('./model/user')
+const {auth} = require('./middleware/auth')
 console.log(configs.mongoURI)
 mongoose.connect(configs.mongoURI,{useNewUrlParser:true}).then(()=> console.log('connection with DB has been established.')).catch(error => console.error(error))
 
@@ -27,6 +28,17 @@ const app = express();
 
 app.get('/', function(req,res) {
   res.send("Hey I am responding to your request")
+})
+
+app.get("/api/users/auth", auth, (req,res) => {
+  res.status(200).json({
+        _id: req.user._id,
+        isAuth: true,
+        email: req.user.email,
+        name: req.user.name,
+        lastname: req.user.lastname,
+        role: req.user.role,
+  })
 })
 
 app.post('/api/users/register', (req,res) => {

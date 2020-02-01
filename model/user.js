@@ -54,7 +54,7 @@ mySchema.pre('save', function( next ) {
 
 mySchema.methods.comparePassword = function(password, callback){
     bcrypt.compare(password, this.password, function(error, isMatch) {
-        if(err) return callback(error);
+        if(error) return callback(error);
         callback(null, isMatch)
     })
 }
@@ -66,6 +66,16 @@ mySchema.methods.generateToken = function(callback){
     user.save(function(error, user) {
         if(error) return callback(error);
         return callback(null, user);
+    })
+}
+
+mySchema.statics.findByToken = function (token, callback){
+    var user = this
+    jwt.verify(token, 'secrets', function(error, decode){
+        user.findOne({"_id":decode, "token":token}, function(err,user){
+            if(err) return callback(err)
+            callback(null, user)
+        })    
     })
 }
 
