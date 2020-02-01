@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Login page for all my web projects",
   "main": "index.js",
+  "engine": {
+    "node": "10.15.3",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
@@ -19,8 +23,8 @@
     "nodemon": "^2.0.2"
   },
   "scripts": {
-    "start": "node index.js",
-    "backend": "nodemon index.js"
+    "start": "node server/index.js",
+    "backend": "nodemon server/index.js"
   },
   "author": "",
   "license": "ISC"
