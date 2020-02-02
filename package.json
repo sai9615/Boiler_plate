@@ -12,6 +12,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cb": "^0.1.0",
+    "concurrently": "^5.1.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -24,7 +25,8 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "backend": "nodemon server/index.js"
+    "backend": "nodemon server/index.js",
+    "dev" : "concurrently \"npm run backend \" \"npm run start --prefix client\""
   },
   "author": "",
   "license": "ISC"
