@@ -17,14 +17,11 @@ const CONFLICT = 409;
 const SERVER_ERROR = 500;
 
 const app = express();
-  const port = process.env.PORT || 5000;
-  app.locals.port = port;
+  app.use(cors())
   app.use(bodyParser.urlencoded({extended:true}))
   app.use(bodyParser.json())
   app.use(cookieParser())
-  app.listen(port, function() {
-  console.log(`listening on port ${port}`);
-  });
+ 
 
 app.get('/', function(req,res) {
   res.send("Hey I am responding to your request")
@@ -89,3 +86,9 @@ app.get("/api/users/logout", auth, (req,res) => {
     })
   })
 })
+
+const port = process.env.PORT || 5000;
+app.locals.port = port;
+app.listen(port, function() {
+  console.log(`listening on port ${port}`);
+  });
