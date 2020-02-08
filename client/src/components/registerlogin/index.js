@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 import{loginUser} from '../../actions/user_actions'
+import { Link } from "react-router-dom";
+
 
 class RegisterLogin extends Component {
 
@@ -63,11 +65,11 @@ class RegisterLogin extends Component {
                             onChange ={e => this.handleChange(e)}
                             id = "email"
                             type = "email"
-                            className = "validate"
+                            class = "validate"
                             />
-                            <label htmlFor="email">Email</label>
+                            <label class="active" for="email">Email</label>
                             <span
-                                className ="helper-text"
+                                class = "helper-text"
                                 data-error = "Incorrect email id"
                                 data-success = "correct mail id provided"
                             />
@@ -80,9 +82,9 @@ class RegisterLogin extends Component {
                             onChange ={e => this.handleChange(e)}
                             id = "password"
                             type = "password"
-                            className = "validate"
+                            class = "validate"
                             />
-                            <label htmlFor ="password">Password</label>
+                            <label class="active" htmlFor ="password">Password</label>
                             <span
                                 className ="helper-text"
                                 data-error = "Incorrect password"
@@ -101,13 +103,23 @@ class RegisterLogin extends Component {
                         <div className="row">
                             <div className = "col 12">
                             <button 
-                            className ="btn waves-effect red lighten-2"
+                            className ="btn waves-effect red waves-light"
                             type="submit"
                             name="action"
                             onClick={this.submitForm}
                             >
                             Login
                             </button>
+                            <Link to={'/register'}>
+                            <button 
+                            style={{ marginLeft: "10px" }}
+                            className ="btn waves-effect red waves-light white-text"
+                            type="submit"
+                            name="action"
+                            onClick={this.submitForm}
+                            >Sign Up
+                            </button>
+                            </Link>
                             </div>
                         </div>
                     </form>
